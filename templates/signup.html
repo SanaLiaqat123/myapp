@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/style.css') }}">
+    <title>Sign Up</title>
+</head>
+<body>
+    <div class="header">
+        <a href="#default" class="logo">Video Sharing App</a>
+        <div class="header-right">
+            <a class="active" href="{{ url_for('index') }}">Home</a>
+        </div>
+      </div>
+    <h1>Sign Up</h1>
+    <form method="POST">
+        <label>Username: <input type="text" name="username" required></label><br>
+        <label>Password: <input type="password" name="password" required></label><br>
+        <label><input type="checkbox" name="is_creator"> Creator Account</label><br>
+        <button type="submit">Sign Up</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/style.css') }}">
+    <title>Video Platform</title>
+</head>
+<body>
+    <div class="header">
+        <a href="#default" class="logo">Video Sharing App</a>
+        <div class="header-right">
+          <a class="active" href="#">Home</a>
+          <a href="{{ url_for('signup') }}">Sign Up</a>
+          <a href="{{ url_for('upload') }}">Upload Video</a>
+        </div>
+      </div>
+    <h1>Welcome to the Sana's Video Sharing App</h1>
+    <h2>Latest Videos</h2>
+    <ul>
+        {% for video in videos %}
+            <li>
+                <a href="{{ url_for('video_details', video_id=video.id) }}">{{ video.title }}</a>
+                <p>{{ video.description }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
