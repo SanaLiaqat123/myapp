@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Upload Video</title>
+</head>
+<body>
+    <div class="header">
+        <a href="#default" class="logo">Video Sharing App</a>
+        <div class="header-right">
+            <a class="active" href="{{ url_for('index') }}">Home</a>
+        </div>
+      </div>
+    <h1>Upload Video</h1>
+    <form method="POST">
+        <label>Title: <input type="text" name="title" required></label><br>
+        <label>Description: <textarea name="description"></textarea></label><br>
+        <label>Hashtags: <input type="text" name="hashtags"></label><br>
+        <label>File Path: <input type="text" name="file_path" required></label><br>
+        <label>File:<input type="file" id="video_file" name="video_file" accept="video/*" required></label><br>
+        <label>Uploaded By (User ID): <input type="number" name="uploaded_by" required></label><br>
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>

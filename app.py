@@ -2,11 +2,18 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///video_platform.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# Azure Cosmos DB configuration
+COSMOS_URI = "https://sana10432266.documents.azure.com:443/"
+PRIMARY_KEY = "keZ4x8xrmqg84HvqwkcLjCqcv0CzAxOEvaZAUwJBI1cGuDI2rVDmmEwkrHMOsOnXk0DS5ZNghxJzACDbpVMDOw=="
+DATABASE_NAME = "VideoAppDB"
+VIDEO_CONTAINER_NAME = "videos"
+COMMENT_CONTAINER_NAME = "comments"
 
-db = SQLAlchemy(app)
+# Initialize Cosmos DB client
+client = CosmosClient(COSMOS_URI, PRIMARY_KEY)
+database = client.get_database_client(DATABASE_NAME)
+video_container = database.get_container_client(VIDEO_CONTAINER_NAME)
+comment_container = database.get_container_client(COMMENT_CONTAINER_NAME)
 
 # Models
 class User(db.Model):

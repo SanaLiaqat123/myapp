@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>{{ video.title }}</title>
+</head>
+<body>
+    <div class="header">
+        <a href="#default" class="logo">Video Sharing App</a>
+        <div class="header-right">
+            <a class="active" href="{{ url_for('index') }}">Home</a>
+        </div>
+      </div>
+    <h1>{{ video.title }}</h1>
+    <p>{{ video.description }}</p>
+    <p>Hashtags: {{ video.hashtags }}</p>
+    <video controls>
+        <source src="{{ video.file_path }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <h2>Comments</h2>
+    <ul>
+        {% for comment in comments %}
+            <li>{{ comment.content }}</li>
+        {% endfor %}
+    </ul>
+    <form method="POST">
+        <label>Comment: <textarea name="comment"></textarea></label><br>
+        <label>User ID: <input type="number" name="user_id" required></label><br>
+        <button type="submit">Add Comment</button>
+    </form>
+</body>
+</html>
